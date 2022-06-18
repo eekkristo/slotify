@@ -1,4 +1,4 @@
-# Simplyframe
+# Simplyframe (Slotify udemy course re-wrote in MVC)
 
 This project was created and inspired by Udemy course: Make a spotify clone from scratch.
 I have re-created the Udemy course using MVC pattern while trying to stay true to the logic behind the course.
@@ -6,7 +6,7 @@ There are however more features than in the original course.
 
 # Usage
 
-Simplyframe already includes a template that has the basic features of most of the web pages. e.g
+Slotify already includes a template that has the basic features of most of the web pages. e.g
 
 * Account creation
 * Account activation via e-mail
