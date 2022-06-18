@@ -80,11 +80,13 @@ import .sql from tests folder
 * https://app.mailgun.com/
 
 ## Env and secret setup
-1. You need to create an unique secret hash for using unique Token hash.
+1. You need to create an unique secret hash for using Token hash.
      * Secret key for hashing. Use randomkeygen for unique random secret key
-     * 256-bit key requirement
-     * @link https://randomkeygen.com/ 
+     * 256-bit key requirement ( 256-bit WEP Keys )
+     * https://randomkeygen.com/ 
+     * Copy the data from there and add it to secret.env ``` SECRET_KEY=<256-bit WEP KEY> ```
 2. Also you need to create secret.env file inside root folder and fill it with required data. Currently during build it will take default credentials to just get it running without considering anything else. 
+
 ## Future and updates
 In the next feature release the following will be added
 * Friendly url, e.g instead of post/1 it will be post/my-awesome-post. (Mostly done)
