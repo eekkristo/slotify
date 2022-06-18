@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<div class="entityInfo">
+    <div class="leftSection">
+        <div class="playlistImage">
+            <img src="/images/icons/playlist.png " alt="" srcset="">
+        </div>
+    </div>
+    <div class="rightSection">
+        <h2>MY PLAYLIST</h2>
+        <p>{{ playlist.name }}</p>
+        <p>Playlist owner: {{ playlist.owner }}</p>
+        <button class="button" onclick="deletePlaylist('{{playlist.id}}')">DELETE PLAYLIST</button>
+    </div>
+</div>  
+
+</div>
+<div class="tracklistContainer">
+    <ul class="tracklist">
+        {% set i = 1 %}
+        {% for song in playlist_songs %}
+        
+        <li class="tracklistRow">
+            <div class="trackCount">
+                <img class="play" src="/images/icons/play-white.png" alt="" onclick="setTrack('{{song.song_id}}', tempPlaylist, true)">
+                <span class="trackNumer">{{ i }}</span>
+            </div>
+            
+
+            <div class="trackInfo">
+                <span class="trackName">{{ song.song_title}}</span>
+                <span class="artistName">{{ song.artist_name }}</span>
+            </div>
+
+            <div class="trackOptions">
+                <input type="hidden" class="songId" value="{{ song.song_id }}">
+                <img src="/images/icons/more.png" alt="" class="optionsButton" onclick="showOptionsMenu(this);">
+            </div>
+
+            <div class="trackDuration">
+                <span class="duration">{{ song.duration }}</span>
+            </div>
+        </li>
+        {% set i = i + 1 %}
+        {% endfor %}
+
+    </ul>
+</div>
+
+<nav class="optionsMenu">
+    <input type="hidden" class="songId">
+    <div class="item" onclick="removeFromPlaylist(this, '{{ playlist.id }}');">Remove from Playlist</div>
+</nav>
+
+{% endblock %}

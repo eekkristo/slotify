@@ -1,0 +1,22 @@
+{% extends "registerbase.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+
+<div class="demo">
+    <div class="row justify-content-center">
+        <div class="col">
+            <form action="/password/request-reset" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Enter your email address to reset your password.</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <button type="submit" class="btn btn-primary">Reset password</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

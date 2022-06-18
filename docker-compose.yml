@@ -1,0 +1,43 @@
+#
+# NB! DO NOT USE THIS FOR PRODUCTION ENVIRONMENT
+# THIS IS USED JUST FOR SETTING UP LOCAL ENVIRONMENT TO TEST THINGS OUT
+#
+version: '3.8'
+services:
+    php-apache-environment:
+        container_name: web-server
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+        env_file:
+            - .env
+            - secret.env
+        ports:
+            - 8000:80
+        networks:
+          - web-service
+    db:
+        container_name: db
+        image: mysql:8.0
+        restart: always
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: my-secret-pw
+        ports:
+            - "3306:3306"
+        networks:
+          - web-service
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+          - 8080:8080
+        environment:
+            PMA_HOST: db
+        networks:
+          - web-service
+networks:
+  web-service:
+    driver: bridge

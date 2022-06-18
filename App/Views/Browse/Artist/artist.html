@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<script>
+    var tempSongIds = '{{ song_ids|json_encode()|raw }}';
+    
+    tempPlaylist = JSON.parse(tempSongIds);
+    //console.log(tempPlaylist);
+    console.log("Hello from artist.html");
+
+</script>
+
+<div class="entifyInfo borderBottom">
+    <div class="centerSection">
+        <div class="artistInfo">
+            <h1 class="artistName">{{ artist.name }}</h1>
+            <div class="headerButtons">
+                <button class="button green" onclick="playFirstSong()">PLAY</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="tracklistContainer borderBottom">
+    <h2>SONGS</h2>
+    <ul class="tracklist">
+        {% set i = 1 %}
+        {% for song in songs %}
+
+        <li class="tracklistRow">
+            <div class="trackCount">
+                <img class="play" src="/images/icons/play-white.png" alt="" onclick="setTrack('{{song.song_id}}', tempPlaylist, true)">
+                <span class="trackNumer">{{ i }}</span>
+            </div>
+            
+
+            <div class="trackInfo">
+                <span class="trackName">{{ song.song_title}}</span>
+                <span class="artistName">{{ song.artist_name }}</span>
+            </div>
+
+            <div class="trackOptions">
+                <input type="hidden" class="songId" value="{{ song.song_id }}">
+                <img src="/images/icons/more.png" alt="" class="optionsButton" onclick="showOptionsMenu(this);">
+            </div>
+
+            <div class="trackDuration">
+                <span class="duration">{{ song.duration }}</span>
+            </div>
+        </li>
+        {% set i = i + 1 %}
+        {% endfor %}
+
+    </ul>
+</div>
+
+<div class="gridViewContainer">
+    <h2>ALBUMS</h2>
+    {% for album in albums %}
+    <div class="gridViewItem">
+        <span role ="link" tabindex="0" onclick="openPage('/browse/album/{{ album.friendly_url}}');">        
+            <img src="/{{ album.artwork_path }} " alt="" srcset="">
+        </span>
+        <div class="gridviewInfo">{{ album.title }}</div>
+    </div>
+    {% endfor %}
+</div>
+
+<nav class="optionsMenu">
+    <input type="hidden" class="songId">
+</nav>
+{% endblock %}

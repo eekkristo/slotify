@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<h1 class="pageHeadingBig">List of albums:</h1>
+
+<div class="gridViewContainer">
+
+
+
+    {% for album in albums %}
+    <div class="gridViewItem">
+        <span role ="link" tabindex="0" onclick="openPage('/browse/album/{{ album.friendly_url}}');">        
+            <img src="/{{ album.artwork_path }} " alt="" srcset="">
+        </span>
+        <div class="gridviewInfo">{{ album.title }}</div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+        {% endblock %}

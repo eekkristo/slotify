@@ -1,0 +1,51 @@
+<div id="navBarContainer">
+    <nav class="navBar">
+
+        <span role="link" tabindex="0" onclick="openPage('/');" class="logo">
+            <img src="/images/icons/logo.png">
+        </span>
+
+
+        <div class="group">
+
+            <div class="navItem">
+                <span onclick="openPage('/search');" class="navItemLink">Search
+                    <img src="/images/icons/search.png" class="icon" alt="Search">
+                </span>
+            </div>
+
+        </div>
+      
+        <div class="group">
+            {% if current_user.role == 'admin' %}
+                <div class="navItem">
+                    <span role="link" tabindex="0" onclick="openPage('/admin');" class="navItemLink">Admin panel</spa>
+                </div>
+            {% endif %}
+
+            <div class="navItem">
+                <span role="link" tabindex="0" onclick="openPage('/mycontent/panel');" class="navItemLink">My content
+                    panel</span>
+            </div>
+
+            <div class="navItem">
+                <span role="link" tabindex="0" onclick="openPage('/browse');" class="navItemLink">Browse</span>
+            </div>
+
+            <div class="navItem">
+                <span role="link" tabindex="0" onclick="openPage('/playlist');" class="navItemLink">Your Music</span>
+            </div>
+
+
+            <div class="navItem">
+                <span role="link" tabindex="0" onclick="openPage('/profile');" class="navItemLink">{{
+                    current_user.first_name }} {{ current_user.last_name }}</span>
+            </div>
+
+            <div class="navItem">
+                <span role="link" tabindex="0" onclick="openPage('/logout');" class="navItemLink">Logout</span>
+            </div>
+        </div>
+
+    </nav>
+</div>

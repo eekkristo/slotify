@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+
+<div class="entityInfo">
+
+    <div class="centerSection">
+        <div class="userInfo">
+            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+        </div>
+    </div>
+
+    <div class="buttonItems">
+        <button class="button green" onclick="openPage('/profile/edit');">USER DETAILS</button>
+        <button class="button green" onclick="openPage('/logout');">LOGOUT</button>
+    </div>
+
+</div>
+
+{% endblock %}

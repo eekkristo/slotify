@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<div class="playlistContainer">
+    <div class="gridViewContainer">
+        <h2>PLAYLIST</h2>
+        <div class="buttonItems">
+            <button class="button green" onclick="createPlaylist('{{current_user.first_name}} {{current_user.last_name}}');">NEW PLAYLIST</button>
+        </div>
+
+
+    </div>
+</div>    
+
+<div class="gridViewContainer">
+
+    {% for playlist in playlists %}
+    <div class="gridViewItem">
+        <span role ="link" tabindex="0" onclick="openPage('/playlist/{{playlist.user_id}}/{{ playlist.id}}');">        
+            <img src="/images/icons/playlist.png" alt="" srcset="">
+        </span>
+        <div class="gridviewInfo">{{ playlist.name }}</div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

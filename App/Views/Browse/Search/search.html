@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<script>
+    $(document).ready(function() {
+
+            // FIXME: Fix the search result. If no data found do not display any data about it
+            $("#search").keyup(function() {
+
+                var search = $(this).val();
+
+                if (search.length >= 3) {
+
+                    $.post("/ajax/searchArtist", { searchArtist: search }, function(data) {
+                        console.log(data);
+
+                        var dataParsed = JSON.parse(data);
+                        if(data) {
+
+                            $("#artist").append("<h2>ARTIST</h2>");
+                            
+                            dataParsed.forEach(artist => {
+                                
+                                $(" \
+                                <div class='searchResultRow'> \
+                                    <div class='artistName'> \
+                                        <span role='link' tabindex='0' onclick='openPage(\"/browse/artist/"+ artist.friendly_url + "\");'>"+ artist.name +"</span> \
+                                    </div> \
+                                </div> \
+                                ").appendTo(".artistsContainer");
+                                console.log(artist.name);
+                            });
+                        }
+                    });
+
+                    $.post("/ajax/searchSong", { searchSong: search }, function(data) {
+                        console.log(data);
+                        // TODO: Add song artist name 
+                        var dataParsed = JSON.parse(data);
+
+                        if(data) {
+                            //$("#song").append("<h2>SONG</h2>");
+                            //$("<li class='tracklistRow>'").appendTo("#trackList");
+                            //$("<div class='trackCound'>")
+                            var artist = [];
+                                
+                            dataParsed.forEach(song => {
+             
+                                console.log(artist)
+                                $("<li class='tracklistRow'> \
+                                    <div class='trackCount'> \
+                                        <img class='play' src='/images/icons/play-white.png' onclick='setTrack( " + song.id +", tempPlaylist, true)'> \
+                                        <span class='trackNumber'>1</span> \
+                                    </div> \
+                                    <div class='trackInfo'> \
+                                        <span class='trackName'>"+ song.title +"</span> \
+                                        <span class='trackNumber'>"+ artist.plays +"</span> \
+                                    </div> \
+                                    <div class='trackOptions'> \
+                                        <img class='optionsButton' src='/images/icons/more.png'> \
+                                    </div> \
+                                    <div class='trackDuration'> \
+                                        <span class='duration'>"+ song.duration +"</span> \
+                                    </div> \
+                                </li> \
+                                    ").appendTo(".tracklist");
+
+
+
+
+                                console.log(song.title);
+                            });    
+                        }
+                       
+                        
+                    });
+
+                    $.post("/ajax/searchAlbum", { searchAlbum: search }, function(data) {
+                        console.log(data);
+                        var dataParsed = JSON.parse(data);
+                        if(data && !data.length == 0) {
+
+                            //$("#album").append("<h2>ALBUM</h2>");
+                            
+                            dataParsed.forEach(album => {
+                              
+                                console.log(album.title);
+                                $(" \
+                                    <div class='gridViewItem'> \
+                                        <div class='artistName'> \
+                                            <span role='link' tabindex='0' onclick='openPage(\"/browse/album/"+ album.friendly_url + "\");'> \
+                                                <img src='/"+ album.artwork_path +"'> \
+                                                <div class='gridViewInfo'> \
+                                                    "+ album.title +"\
+                                                </div>\
+                                            </span> \
+                                        </div> \
+                                    </div> \
+                                    ").appendTo(".gridViewContainer");
+
+                            });
+                        }
+                    });
+                }
+            $(".tracklist").empty();
+            $(".artistsContainer").empty();
+            $(".gridViewContainer").empty();
+            });
+    });
+</script>
+
+
+<div class="searchContainer">
+    <h4>Search for an artist, album or songs</h4>
+    <input type="text" class="searchInput" placeholder="Search..." id="search" autocomplete="off"> 
+    
+
+</div>    
+
+<div class="tracklistContainer borderBottom">
+    <ul class="tracklist">
+    </ul>
+</div>
+<div class="artistsContainer borderButtom">
+
+</div>
+
+<div class="gridViewContainer">
+
+</div>
+
+{% endblock %}

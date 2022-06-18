@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<form action="/search/content/" method="post">
+    <input type="text" name="text" id="text">
+    <input type="submit" name="data" value="submit">
+</form>    
+
+{% endblock %}

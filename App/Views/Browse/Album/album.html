@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<script>
+    var tempSongIds = '{{ song_ids|json_encode()|raw }}';
+    
+    tempPlaylist = JSON.parse(tempSongIds);
+    console.log(tempPlaylist);
+
+</script>
+<div class="entityInfo">
+    <div class="leftSection">
+        <img src="/{{ album.artwork_path }} " alt="" srcset="">
+    </div>
+    <div class="rightSection">
+        <h2>{{ album.title }}</h2>
+        <p>By FIXME: Fix artist name in database </p>
+        <p>{{ album.name }}</p>
+        <p>Total Songs in Album: {{ total_songs }}</p>
+
+
+    </div>
+</div>
+    <div class="tracklistContainer">
+        <ul class="tracklist">
+            {% set i = 1 %}
+            {% for song in songs %}
+
+            <li class="tracklistRow">
+                <div class="trackCount">
+                    <img class="play" src="/images/icons/play-white.png" alt="" onclick="setTrack('{{song.song_id}}', tempPlaylist, true)">
+                    <span class="trackNumer">{{ i }}</span>
+                </div>
+                
+
+                <div class="trackInfo">
+                    <span class="trackName">{{ song.song_title}}</span>
+                    <span class="artistName">{{ song.artist_name }}</span>
+                </div>
+
+                <div class="trackOptions">
+                    <input type="hidden" class="songId" value="{{ song.song_id }}">
+                    <img src="/images/icons/more.png" alt="" class="optionsButton" onclick="showOptionsMenu(this);">
+                </div>
+
+                <div class="trackDuration">
+                    <span class="duration">{{ song.duration }}</span>
+                </div>
+            </li>
+            {% set i = i + 1 %}
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+
+
+<nav class="optionsMenu">
+    <input type="hidden" class="songId">
+</nav>
+
+{% endblock %}

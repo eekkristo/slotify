@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>Welcome to Slotify!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-dark-5@1.1.3/dist/css/bootstrap-night.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/register.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/hideShowPassword.js"></script>
+</head>
+<body>
+
+
+<div id="background">
+    <div id="loginContainer">
+        <div id="inputContainer">
+
+            <h2>Register an account</h2>
+            {% if user.errors is not empty %}
+
+
+            {% for error in user.errors %}
+            <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+
+            {% endif %}
+
+
+            <form action="/register/create" method="post">
+
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                       value="{{ user.email }}" placeholder="e.g firstname@example.com">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+
+                <label for="exampleInputEmail1">First name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}"
+                       placeholder="e.g Bart">
+
+                <label for="exampleInputEmail1">Last name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}"
+                       placeholder="e.g Simpson">
+
+
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" id="password" name="password" placeholder="">
+
+
+                <input type="checkbox" class="form-check-input" id="tos" name="tos">
+                I have read the <a href="#">terms of
+                    service</a>
+
+                <button type="submit" name="register" id="register" class="btn btn-primary">Register</button>
+
+            </form>
+            <div class="hasAccountText">
+                <a id="hideRegister" href="/login">Already have an account? Log in here.</a>
+            </div>
+        </div>
+        <div id="loginText">
+            <h1>Get great music, right now</h1>
+            <h2>Listen to loads of songs for free</h2>
+            <ul>
+                <li>Discover music you'll fall in love with</li>
+                <li>Create your own playlists</li>
+                <li>Follow artists to keep up to date</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    /*
+    $('#password').hideShowPassword({
+        show: true,
+        innerToggle: 'focus'
+    });
+*/
+     
+
+</script>
+
+</body>
+</html>
