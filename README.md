@@ -17,8 +17,7 @@ Slotify already includes a template that has the basic features of most of the w
 
 ## Future and updates
 Updated will be random and as is when I feel like it since it is a side project and I don't have much time to deal with out. However, the following things I want to add
-* Friendly url, e.g instead of post/1 it will be post/my-awesome-post. Half-way done and working
-* More coming soon
+* Check contributing below
 
 ## Installation
 
@@ -117,5 +116,17 @@ The following issues I have commented inside the codes. Can be found by installi
 #18	TODO:: Implement a global $_POST check. By default we should always escape charset as we do not trust the end user. 
 #19	TODO: Implement a check where we will authorize artists / label owners and administrators with different privileges
 ```
+
+## Contributing
+Feel free to contribute to this project to fix the issues or add more stuff. To contribute create your own branch and request a pull request. 
+Some of the known issues/things that would be awesome if someone added/fixed
+1. Make Dockerfile and docker-compose.yml better ( They are not the best right now. They work but could be way better)
+2. Implement a listener to docker-compose.yml so that if you develop and save a change, it will automatically render new settings, e.g nodemon or something
+3. Change design to use bootstrap everywhere. More user-friendly
+4. Fix the bugs that I have listed
+
+## What, how and why ?
+This Dockerfile should be possible to run inside a cluster as well, e.g Kubernetes. When I have time I will make a deployment yaml as well so that you could deploy this inside a Kubernetes cluster as well. I don't know many projects and guides that show how to-do-it. Hopefully I will soon be able to create some manuals on the side of containerization.
+
 ## License
 [MIT](https://github.com/eekkristo/gublin/blob/main/LICENSE)
