@@ -16,7 +16,7 @@ Slotify already includes a template that has the basic features of most of the w
 * Flash messages
 
 ## Future and updates
-Updated will be random and as is when I feel like it since it is a side project and I don't have much time to deal with out. However, the following things I want to add
+Updates will be random and as is when I feel like it since it is a side project and I don't have much time to deal with out. However, the following things I want to add
 * Check contributing below
 
 ## Installation
@@ -26,13 +26,15 @@ Updated will be random and as is when I feel like it since it is a side project 
 1. Download Docker Desktop 
 2. Run inside the root folder following command
 ```composer
-docker-compose up
+docker-compose up 
+```
 or
+```composer
 docker-compose up -d // Run in the background
-
+```
 // If you have made changes to code, run the following
 docker-compose up --build
-```
+
 * Navigate to the following websites
 1.  http://localhost:8000 - Website itself - 
 2.  http://localhost:8080 - Mysql User Interface
@@ -44,7 +46,16 @@ docker-compose up --build
 4. Choose slotify.sql and execute. Location is ``` App\Tests\Database\slotify.sql ```
 
 ## Default credentials
-1. Website: Username - demo@example.net Password - Password // This only works if you import slotify.sql
+1. Website: 
+Username 
+```
+demo@example.net 
+```
+Password
+```
+Password 
+```
+This only works if you import slotify.sql
 2. Mysql User Interface: Username - root Password - my-secret-pw
 
 ### Default credentials are defined inside .env variable
@@ -75,8 +86,10 @@ import .sql from tests folder
 ```
 
 ## Mailgun & SMTP set up
-* You need to register mailgun account and set-up API keys for email sending to work. There is free version which does not require credit card. However, you can only send emails do confirmed emails(approved emails to avoid sending spam)
-* https://app.mailgun.com/
+1.  You need to register mailgun account and set-up API keys for email sending to work. There is free version which does not require credit card. However, you can only send emails do confirmed emails(approved emails to avoid sending spam)
+2. https://app.mailgun.com/
+3. Once you have set-up API configuration and "confirmed emails" and you register an account inside application then be sure to check your spam folder inbox. 
+* You can also approve user manually inside database if needed
 
 ## Env and secret setup
 1. You need to create an unique secret hash for using Token hash.
@@ -127,6 +140,7 @@ Some of the known issues/things that would be awesome if someone added/fixed
 
 ## What, how and why ?
 This Dockerfile should be possible to run inside a cluster as well, e.g Kubernetes. When I have time I will make a deployment yaml as well so that you could deploy this inside a Kubernetes cluster as well. I don't know many projects and guides that show how to-do-it. Hopefully I will soon be able to create some manuals on the side of containerization.
+
 
 ## License
 [MIT](https://github.com/eekkristo/gublin/blob/main/LICENSE)
