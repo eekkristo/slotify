@@ -38,6 +38,12 @@ docker-compose up --build
 1.  http://localhost:8000 - Website itself - 
 2.  http://localhost:8080 - Mysql User Interface
 
+## Importing .sql file
+1. Navigate to http://localhost:8080
+2. Log with default credentials
+3. Select import
+4. Choose slotify.sql and execute. Location is ``` App\Tests\Database\slotify.sql ```
+
 ## Default credentials
 1. Website: Username - demo@example.net Password - Password // This only works if you import slotify.sql
 2. Mysql User Interface: Username - root Password - my-secret-pw
