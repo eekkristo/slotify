@@ -143,7 +143,7 @@ The following issues I have commented inside the codes. Can be found by installi
 ```
 
 ## Contributing
-Feel free to contribute to this project to fix the issues or add more stuff. To contribute create your own branch and request a pull request. 
+Feel free to contribute to this project to fix the issues or add more stuff. To contribute create your own branch and request a pull request or fork your own clone. 
 Some of the known issues would be awesome if someone fixed. Additionally the following which I will try to fix myself in priority.
 1. Make Dockerfile and docker-compose.yml better ( During docker-compose up it should import the .sql file automatically. )
 2. Implement a listener to so that if you develop and save a change, it will automatically render new settings, e.g nodemon or something
