@@ -76,7 +76,21 @@ my-secret-pw
 docker rmi $(docker images -a -q)
 docker rm $(docker ps -a -q)
 ```
-
+ ** NB! This will delete all of the images and containers inside you machine. If you have more images then please run **
+ Removing docker images
+ ```
+Find docker image <mvc-slotify_php-apache-environment>
+docker image ls
+// Copy IMAGE ID and run the following 
+docker rmi <IMAGE ID>
+ ```
+Removing Container
+ ```
+ Find container <mvc-slotify_php-apache-environment>
+ docker ps -a
+ // Copy CONTAINER ID
+ docker rm <CONTAINER ID>
+ ```
 ## Docker issues 
 There have been sometimes issues where you are unable to connect to the database. So far I have seen this issue in Linux.
 Simply run:
