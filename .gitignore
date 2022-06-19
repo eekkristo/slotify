@@ -4,3 +4,5 @@ logs
 init/
 docker/
 vendor/
+database/
+.DS_Store
