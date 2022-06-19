@@ -1,8 +1,8 @@
-# Simplyframe (Slotify udemy course re-wrote in MVC)
+# Simplyframe (udemy course re-wrote in MVC)
 
 This project was created and inspired by Udemy course: Make a spotify clone from scratch.
 I have re-created the Udemy course using MVC pattern while trying to stay true to the logic behind the course.
-There are however more features than in the original course.
+There are however more features than in the original course. If you have come from that course then you can find this project interesting.
 
 # Usage
 
@@ -12,34 +12,37 @@ Slotify already includes a template that has the basic features of most of the w
 * Account activation via e-mail
 * Password reset
 * Remember me for different devices for user
-* Visited page before forcing user to login
+* Visited page after forcing user to login
 * Flash messages
 
 ## Future and updates
-Updates will be random and as is when I feel like it since it is a side project and I don't have much time to deal with out. However, the following things I want to add
-* Check contributing below
+Updates will be random and as is when I feel like it since it is a side project and I don't have much time to deal with it. 
+Check contributing below to find what should be done.
 
 ## Installation
 
 ### Via Docker and docker-compose
-* This is the recommended way to start it and check it out. Does not require configuring anything yourself
+* This is the recommended way to start it and check it out. Does not require configuring anything yourself except for importing .sql, which we will talk below more.
 1. Download Docker Desktop 
-2. Run inside the root folder following command
+2. Run inside the project folder the following command
 ```composer
 docker-compose up 
 ```
-or
+or to run in the background window
 ```composer
-docker-compose up -d // Run in the background
+docker-compose up -d 
 ```
 // If you have made changes to code, run the following
+```composer
 docker-compose up --build
-
-* Navigate to the following websites
-1.  http://localhost:8000 - Website itself - 
+```
+* The following websites appear when docker container is running
+1.  http://localhost:8000 - Application itself - 
 2.  http://localhost:8080 - Mysql User Interface
 
+Currently .sql does not import itself automatically. Should be added a volume map in docker-compose and it should also automatically import it.
 ## Importing .sql file
+To get the full experience you should import the .sql file as well.
 1. Navigate to http://localhost:8080
 2. Log with default credentials
 3. Select import
@@ -47,23 +50,27 @@ docker-compose up --build
 
 ## Default credentials
 1. Website: 
-Username 
+Username to login
 ```
 demo@example.net 
 ```
-Password
+Password to login
 ```
 Password 
 ```
 This only works if you import slotify.sql
-2. Mysql User Interface: Username - root Password - my-secret-pw
+2. Mysql User Interface: Username - 
+```
+root 
+```
+Password
+```
+my-secret-pw
+```
 
 ### Default credentials are defined inside .env variable
 
-* If you want to import the data as well log into Mysql interface and import from 
-``` App\Tests\Database\slotify.sql ```
-
-* Until you have not removed the docker build files and containers the data will be available inside mysql database. Otherwise data WILL BE LOST.
+* Until you have not removed the docker build files and/or containers the data will be available inside mysql database. Otherwise data WILL BE LOST.
 * To clean up everything run the following LINUX/OSX: (Sorry window guys, I don't have a command for you)
 ```composer
 docker rmi $(docker images -a -q)
@@ -71,20 +78,25 @@ docker rm $(docker ps -a -q)
 ```
 
 ## Docker issues 
-There have been sometimes issues where you are unable to connect to the database. 
-- Simple run docker-compose again and looks at the logs when it is ready to start taking sessions.
+There have been sometimes issues where you are unable to connect to the database. So far I have seen this issue in Linux.
+Simply run:
+```composer
+docker-compose down  
+```
+```
+sudo docker-compose up --build
+```
 ### Manual set-up
 1. Download your favourite stack, e.g LAMPP, WAMPP, XAMPP etc...
 2. Download composer https://getcomposer.org/download/
 3. In your vhost.conf file set up virtual host to reference to /public folder
 * https://www.cloudways.com/blog/configure-virtual-host-on-windows-10-for-wordpress/
-4. Navigate to project folder and use the composer and run the following command
+4. Navigate to project folder and run the following command
 
 ```composer
 composer install
-import .sql from tests folder
 ```
-
+* For database import use your UI or import it manually via terminal/cmd
 ## Mailgun & SMTP set up
 1.  You need to register mailgun account and set-up API keys for email sending to work. There is free version which does not require credit card. However, you can only send emails do confirmed emails(approved emails to avoid sending spam)
 2. https://app.mailgun.com/
@@ -92,21 +104,21 @@ import .sql from tests folder
 * You can also approve user manually inside database if needed
 
 ## Env and secret setup
-1. You need to create an unique secret hash for using Token hash.
+1. You need to create an unique secret hash for Token generation.
      * Secret key for hashing. Use randomkeygen for unique random secret key
      * 256-bit key requirement ( 256-bit WEP Keys )
      * https://randomkeygen.com/ 
      * Copy the data from there and add it to secret.env ``` SECRET_KEY=<256-bit WEP KEY> ```
-2. Also you need to create secret.env file inside root folder and fill it with required data. Currently during build it will take default credentials to just get it running without considering anything else. 
+2. Also you should create secret.env file inside root folder and fill it with required data. Currently during build it will take default credentials from .env to just get it running without considering anything else. 
 
 ## Future and updates
 In the next feature release the following will be added
 * Friendly url, e.g instead of post/1 it will be post/my-awesome-post. (Mostly done)
-* More coming soon
+* Admin / Artist interface to upload music and approve it by someone
 
 # Issues and bugs
-Currently there are quite many issues that have to be resolved to make it working really well.
-The following issues I have commented inside the codes. Can be found by installing TODO extension. 
+Currently there are quite many issues that have to be resolved before developing more features.
+The following issues I have commented inside the codes. Can be found by installing TODO extension in Visual Code for example. 
 
 ```composer
 #1	TODO: Implement Dispatch.php file inside Routes file that fill handle all of this data so we do not have to define this ourselces
@@ -132,14 +144,14 @@ The following issues I have commented inside the codes. Can be found by installi
 
 ## Contributing
 Feel free to contribute to this project to fix the issues or add more stuff. To contribute create your own branch and request a pull request. 
-Some of the known issues/things that would be awesome if someone added/fixed
-1. Make Dockerfile and docker-compose.yml better ( They are not the best right now. They work but could be way better)
-2. Implement a listener to docker-compose.yml so that if you develop and save a change, it will automatically render new settings, e.g nodemon or something
+Some of the known issues would be awesome if someone fixed. Additionally the following which I will try to fix myself in priority.
+1. Make Dockerfile and docker-compose.yml better ( During docker-compose up it should import the .sql file automatically. )
+2. Implement a listener to so that if you develop and save a change, it will automatically render new settings, e.g nodemon or something
 3. Change design to use bootstrap everywhere. More user-friendly
 4. Fix the bugs that I have listed
 
 ## What, how and why ?
-This Dockerfile should be possible to run inside a cluster as well, e.g Kubernetes. When I have time I will make a deployment yaml as well so that you could deploy this inside a Kubernetes cluster as well. I don't know many projects and guides that show how to-do-it. Hopefully I will soon be able to create some manuals on the side of containerization.
+This Dockerfile should be possible to run inside a cluster as well, e.g Kubernetes. When I have time I will make a demo as well so that you could deploy this inside a Kubernetes cluster as well. I don't know many PHP projects and guides that show how to-do-it - most of them are really outdated and insecure. Hopefully I will soon be able to create some manuals on the side of containerization.
 
 
 ## License
