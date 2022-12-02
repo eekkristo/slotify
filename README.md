@@ -1,6 +1,6 @@
-# Simplyframe (udemy course re-wrote in MVC)
+# Simplyframe MVC example
 
-This project was created and inspired by Udemy course: Make a spotify clone from scratch.
+This project was created and inspired by Udemy course
 I have re-created the Udemy course using MVC pattern while trying to stay true to the logic behind the course.
 There are however more features than in the original course. If you have come from that course then you can find this project interesting.
 
