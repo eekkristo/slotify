@@ -40,13 +40,18 @@ docker-compose up --build
 1.  http://localhost:8000 - Application itself - 
 2.  http://localhost:8080 - Mysql User Interface
 
+## Docker-compose now imports the .sql automaticallt. Below step can be removed. Leaving it here just for reference only.
+
+```
+This can be ignored if you are using docker-compose to run the image locally
 Currently .sql does not import itself automatically. Should be added a volume map in docker-compose and it should also automatically import it.
-## Importing .sql file
+Importing .sql file
 To get the full experience you should import the .sql file as well.
 1. Navigate to http://localhost:8080
 2. Log with default credentials
 3. Select import
 4. Choose slotify.sql and execute. Location is ``` App\Tests\Database\slotify.sql ```
+```
 
 ## Default credentials
 1. Website: 
