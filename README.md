@@ -63,7 +63,7 @@ Password to login
 ```
 Password 
 ```
-This only works if you import slotify.sql
+Adminer gui credentials for accessing MySql DB server
 2. Mysql User Interface: Username - 
 ```
 root 
