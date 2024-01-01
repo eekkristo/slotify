@@ -18,6 +18,11 @@ services:
             - 8000:80
         networks:
           - web-service
+        develop:
+          watch:
+            - action: sync 
+              path: ./
+              target: /var/www/html
     db:
         container_name: db
         image: mysql:8.0

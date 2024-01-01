@@ -105,6 +105,11 @@ docker-compose down
 ```
 sudo docker-compose up --build
 ```
+## Docker dev environment
+Docker Compose version 2.22 and later support ```watch``` command. 
+
+New settings allows now to make changes without having to rebuild.
+Simply run command: ` docker compose watch `
 ### Manual set-up
 1. Download your favourite stack, e.g LAMPP, WAMPP, XAMPP etc...
 2. Download composer https://getcomposer.org/download/
