@@ -18,6 +18,21 @@ use Core\View;
  */
 class Song extends \Core\Model
 {
+    public string $title;
+    public string $arrist_id;
+    public string $genre_id;
+    public string $artwork_path;
+    public string $song_title;
+    public string $duration;
+    public string $path;
+    public string $song_id;
+    public string $album_id;
+    public string $artist_id;
+    public string $album_title;
+    public string $genre;
+    public string $artist_name;
+
+    public array $errors;
 
     public function __construct($data = [])
     {
@@ -57,7 +72,7 @@ class Song extends \Core\Model
         left join albums a on a.id = s.album_id
         left join artists artist on s.artist_id = artist.id
         left join genres g on s.genre_id = g.id
-       	WHERE artist.id = :id LIMIT ${limit}";
+       	WHERE artist.id = :id LIMIT {$limit}";
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);

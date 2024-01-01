@@ -18,7 +18,15 @@ use Core\View;
  */
 class Artist extends \Core\Model
 {
+    public int $id;
+    public string $title;
+    public int $artist_id; 
+    public string $name;
+    public int $genre_id;
+    public string $artwork_path;
+    public string $friendly_url;
 
+    public array $errors;
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {

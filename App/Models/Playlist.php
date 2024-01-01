@@ -17,6 +17,14 @@ class Playlist extends \Core\Model
 {
 
     protected $playlistOrder;
+    public string $name;
+    public string $owner;
+    public int $user_id;
+    public string $date_created;
+    public string $username; 
+    public int $id;
+    public int $playlistId;
+    public int $songId;
 
     public function __construct($data = [])
     {

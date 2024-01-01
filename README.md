@@ -19,6 +19,8 @@ Slotify already includes a template that has the basic features of most of the w
 Updates will be random and as is when I feel like it since it is a side project and I don't have much time to deal with it. 
 Check contributing below to find what should be done.
 
+### Please check Changelog for recent updated
+[Changelog](./CHANGELOG.md)
 ## Installation
 
 ### Via Docker and docker-compose

@@ -18,7 +18,13 @@ use Core\View;
  */
 class Album extends \Core\Model
 {
-
+    public $id;
+    public $title;
+    public $artist_id;
+    public $genre_id;
+    public $artwork_path;
+    public $friendly_url;
+    public $song_title;
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {

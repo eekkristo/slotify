@@ -16,9 +16,25 @@ use PDO;
  * @property $tos
  *
  */
-class User extends \Core\Model 
-{
+class User extends \Core\Model
+ {
+    public int $id;
+    public string $email;
+    public string $first_name;
+    public string $last_name;
+    public string $password;
+    public string $activation_token;
+    public string $tos;
+    public string $remember_token; 
+    private $expiry_timestamp;
+    public null $password_reset_hash;
+    public null $password_reset_expires_at;
+    public null $password_reset_token;
+    public string $activation_hash;
+    public int $is_active;
+    public string $role;
 
+    public array $errors;
     // TODO:: Implement a global $_POST check. By default we should always escape charset as we do not trust the end user. 
     // Currently only works with the Model where we run this function inside the __construct function. However, it should be posted inside global Model.
     public function __construct($data = [], $escape = true)
@@ -341,6 +357,7 @@ class User extends \Core\Model
     /**
      * Send email to the user containing the activation link
      *
+    public 
      * @return mixed
      */
     public function sendActivationEmail()
