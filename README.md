@@ -27,7 +27,6 @@ or to run in the background window
 ```composer
 docker-compose up -d 
 ```
-```
 * The following websites appear when docker container is running
 1.  http://localhost:8000 - Application itself - 
 2.  http://localhost:8080 - Mysql User Interface
