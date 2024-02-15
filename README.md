@@ -33,14 +33,17 @@ docker-compose up -d
 
 ## Default credentials
 1. Website: 
-Username to login: demo@example.net
+   
+> Username to login: demo@example.net
  
-Password to login: Password
+> Password to login: Password
 
 Adminer gui credentials for accessing MySql DB server
-2. Mysql User Interface: Username: root 
+1. Mysql User Interface 
+   
+> Username: root 
 
-Password: my-secret-pw
+> Password: my-secret-pw
 
 ### Default credentials are defined inside .env variable
 
