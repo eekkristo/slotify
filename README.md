@@ -1,19 +1,12 @@
 # Simplyframe MVC example
 
 This project was created and inspired by Udemy course
-I have re-created the Udemy course using MVC pattern while trying to stay true to the logic behind the course.
+I have re-created the Udemy course using MVC pattern. 
 There are however more features than in the original course. If you have come from that course then you can find this project interesting.
 
 # Usage
 
-Slotify already includes a template that has the basic features of most of the web pages. e.g
-
-* Account creation
-* Account activation via e-mail
-* Password reset
-* Remember me for different devices for user
-* Visited page after forcing user to login
-* Flash messages
+This project  already includes a template that has the basic features of most of the web pages. 
 
 ## Future and updates
 Updates will be random and as is when I feel like it since it is a side project and I don't have much time to deal with it. 
@@ -34,26 +27,10 @@ or to run in the background window
 ```composer
 docker-compose up -d 
 ```
-// If you have made changes to code, run the following
-```composer
-docker-compose up --build
 ```
 * The following websites appear when docker container is running
 1.  http://localhost:8000 - Application itself - 
 2.  http://localhost:8080 - Mysql User Interface
-
-## Docker-compose now imports the .sql automaticallt. Below step can be removed. Leaving it here just for reference only.
-
-```
-This can be ignored if you are using docker-compose to run the image locally
-Currently .sql does not import itself automatically. Should be added a volume map in docker-compose and it should also automatically import it.
-Importing .sql file
-To get the full experience you should import the .sql file as well.
-1. Navigate to http://localhost:8080
-2. Log with default credentials
-3. Select import
-4. Choose slotify.sql and execute. Location is ``` App\Tests\Database\slotify.sql ```
-```
 
 ## Default credentials
 1. Website: 
@@ -77,6 +54,8 @@ my-secret-pw
 
 ### Default credentials are defined inside .env variable
 
+If you want to not define them directly you can set them up via environment variables inside the container.
+
 * Until you have not removed the docker build files and/or containers the data will be available inside mysql database. Otherwise data WILL BE LOST.
 * To clean up everything run the following LINUX/OSX: (Sorry window guys, I don't have a command for you)
 ```composer
@@ -98,20 +77,13 @@ Removing Container
  // Copy CONTAINER ID
  docker rm <CONTAINER ID>
  ```
-## Docker issues 
-There have been sometimes issues where you are unable to connect to the database. So far I have seen this issue in Linux.
-Simply run:
-```composer
-docker-compose down  
-```
-```
-sudo docker-compose up --build
-```
+
 ## Docker dev environment
 Docker Compose version 2.22 and later support ```watch``` command. 
 
 New settings allows now to make changes without having to rebuild.
 Simply run command: ` docker compose watch `
+
 ### Manual set-up
 1. Download your favourite stack, e.g LAMPP, WAMPP, XAMPP etc...
 2. Download composer https://getcomposer.org/download/

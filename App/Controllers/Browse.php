@@ -59,7 +59,7 @@ class Browse extends Authenticated
         echo "<script>console.log('testFromIndexAction');</script>"; //
   
     }
-    
+
     public function singleAction()
     {
 
