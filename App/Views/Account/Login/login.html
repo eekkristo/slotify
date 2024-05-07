@@ -51,50 +51,6 @@
     //});
 
 </script>
-
-{# <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shaka Player DRM Example for Audio</title>
-  <!-- Include Shaka Player library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.0.0/shaka-player.compiled.js"></script>
-</head>
-<body>
-  <h1>Shaka Player DRM Example for Audio</h1>
-  <!-- Audio element for playback -->
-  <audio id="audio-player" controls autoplay></audio>
-  <script>
-    // Initialize Shaka Player for audio playback
-    async function initPlayer() {
-      // Initialize the audio element
-      const audioElement = document.getElementById('audio-player');
-      const manifestURL = 'music/mpd/bensound-acousticbreeze.mpd'; // URL to the DASH manifest
-      
-      try {
-        // Configure Shaka Player to use Widevine DRM
-        await shaka.Player.probeSupport();
-        const player = new shaka.Player(audioElement);
-        await player.load(manifestURL);
-
-        // Playback success
-        console.log('Successfully loaded and played content.');
-      } catch (error) {
-        // Playback failure
-        console.error('Error loading or playing content:', error);
-      }
-    }
-
-    // Call the initPlayer function when the document is ready
-    document.addEventListener('DOMContentLoaded', initPlayer);
-  </script>
-</body>
-</html> #}
-
-
-
-
 </body>
 </html>
 
