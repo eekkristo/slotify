@@ -1,5 +1,6 @@
 {% set array = random_songs|raw %}
 <script type="application/javascript">
+
 console.log('{{ random_songs|json_encode()|raw}}');
 
     $(document).ready(function() {
@@ -176,7 +177,7 @@ console.log('{{ random_songs|json_encode()|raw}}');
 
             $(".trackName span").text(track.title);
             audioElement.setTrack(track);
-
+            console.log(track)
             if (play) {
                 playSong();
             }
@@ -188,12 +189,33 @@ console.log('{{ random_songs|json_encode()|raw}}');
 
     }
 
+    // Initialize Shaka Player for audio playback
+    async function initPlayer() {
+        // Initialize the audio element
+        const audioElement = document.getElementById('audio-player');
+        const manifestURL = 'music/mpd/bensound-acousticbreeze.mpd'; // URL to the DASH manifest
+        
+        try {
+            // Configure Shaka Player to use Widevine DRM
+            await shaka.Player.probeSupport();
+            const player = new shaka.Player(audioElement);
+            await player.load(manifestURL);
+
+            // Playback success
+            console.log('Successfully loaded and played content.');
+        } catch (error) {
+            // Playback failure
+            console.error('Error loading or playing content:', error);
+        }
+    }
+  
+    // Call the initPlayer function when the document is ready
+    document.addEventListener('DOMContentLoaded', initPlayer);
+
     function playSong() {
 
         if (audioElement.audio.currentTime == 0) {
-            $.post("/ajax/trackCountUpdate", { songId:  audioElement.currentlyPlaying.id }, function(data) {
-                
-                
+            $.post("/ajax/trackCountUpdate", { songId:  audioElement.currentlyPlaying.id }, function(data) {     
             });
         }
 
@@ -237,7 +259,7 @@ console.log('{{ random_songs|json_encode()|raw}}');
         </div>
 
         <div id="nowPlayingCenter">
-
+            <audio id="audio-player" controls autoplay></audio>
             <div class="content playerControls">
 
                 <div class="buttons">

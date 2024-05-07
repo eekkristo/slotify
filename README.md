@@ -6,18 +6,35 @@ There are however more features than in the original course. If you have come fr
 
 # Usage
 
-This project  already includes a template that has the basic features of most of the web pages. 
+This project already includes a template that has the basic features of most of the web pages. 
 
 ## Future and updates
 Updates will be random and as is when I feel like it since it is a side project and I don't have much time to deal with it. 
-Check contributing below to find what should be done.
+Check contribution below to find what should be done.
 
-### Please check Changelog for recent updated
+## Please check Changelog for recent updates
 [Changelog](./CHANGELOG.md)
+
+### Major update - in progress
+
+Recently I listened to the actual Spotify and thought to myself how have they hidden their audio files, so that you can't download it.
+
+I started digging deeper and realized there is something called EME - Encrypted Media Extensions and ABR - Adaptive Bitrate Streaming. I decided to tinker around with it and see how far  I can go with it. This initial push already follows some of those scopes which kind of "put" it behind a DRM. I would not call it yet a full DRM but I dare you to try and download this file :). Additionally, the files are loaded via chunks which is quite neat :D
+
+By no means I am an expert of it yet, but as time goes on I will try to adopt this and start testing how is it possible, if it even is to break the chunks and dump the files as real audio files.
+
+I will leave some interesting links:
+
+- https://w3c.github.io/encrypted-media/#mediaencryptedevent
+- https://www.vdocipher.com/blog/adaptive-bitrate-streaming
+- https://evermeet.cx/ffmpeg/
+- https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Audio_codecs#choosing_an_audio_codec
+- https://nightly-dot-shaka-player-demo.appspot.com/docs/api/index.html
+
 ## Installation
 
 ### Via Docker and docker-compose
-* This is the recommended way to start it and check it out. Does not require configuring anything yourself except for importing .sql, which we will talk below more.
+* This is the recommended way to start it and check it out. Does not require configuring anything yourself.
 1. Download Docker Desktop 
 2. Run inside the project folder the following command
 ```composer
@@ -28,7 +45,7 @@ or to run in the background window
 docker-compose up -d 
 ```
 * The following websites appear when docker container is running
-1.  http://localhost:8000 - Application itself - 
+1.  http://localhost:8443 - Application itself - 
 2.  http://localhost:8080 - Mysql User Interface
 
 ## Default credentials
@@ -49,13 +66,14 @@ Adminer gui credentials for accessing MySql DB server
 
 If you want to not define them directly you can set them up via environment variables inside the container.
 
-* Until you have not removed the docker build files and/or containers the data will be available inside mysql database. Otherwise data WILL BE LOST.
+* Until you have not removed the docker build files and/or containers the data will be available inside mysql database. Otherwise, data WILL BE LOST.
 * To clean up everything run the following LINUX/OSX: (Sorry window guys, I don't have a command for you)
 ```composer
 docker rmi $(docker images -a -q)
 docker rm $(docker ps -a -q)
 ```
- ** NB! This will delete all of the images and containers inside you machine. If you have more images then please run **
+ ** NB! This will delete all of the images and containers inside your machine. If you have more images please run **
+
  Removing docker images
  ```
 Find docker image <mvc-slotify_php-apache-environment>
@@ -108,30 +126,8 @@ In the next feature release the following will be added
 * Admin / Artist interface to upload music and approve it by someone
 
 # Issues and bugs
-Currently there are quite many issues that have to be resolved before developing more features.
-The following issues I have commented inside the codes. Can be found by installing TODO extension in Visual Code for example. 
 
-```composer
-#1	TODO: Implement Dispatch.php file inside Routes file that fill handle all of this data so we do not have to define this ourselces
-#2	TODO: Implement update email and update password change
-#3	TODO:: Make this better. Right now this kind of is all hard coded into here and due to that really hard to add more options
-#4	FIXME: There is a bug if you add a song from your current playlist where you are another song the UI will flip out and render double your playlist
-#5	FIXME: When you create a new playlist it will not be visible in the add to playlist. This is due to result is not empty. 
-#6	TODO: Implement a delete song from playlist. Currently due to clearing optionsMenu we can't display delete from playlist function.
-#7	TODO: Implement a $_POST check that deals with the data charset escape. Since js calls can be changed we should always assume the worst
-#8	TODO: Implement a global json_encode parameter so that we do not have to render it ourselves constantly. Create a function for it and call it that way?
-#9	FIXME:: Due to redirect back to root to store flash we are also taking the navbar and playbar with us 
-#10	TODO: Fix this later with new function for redirect
-#11	FIXME: Seperate Album and Artist Controllers to seperate files
-#12	TODO: Make this better
-#13	TODO: Make this better and
-#14	TODO: Implement 404 artist not found designed page
-#15	FIXME: Fix the search result. If no data found do not display any data about it
-#16	TODO: Add song artist name 
-#17	FIXME: Fix artist name in database 
-#18	TODO:: Implement a global $_POST check. By default we should always escape charset as we do not trust the end user. 
-#19	TODO: Implement a check where we will authorize artists / label owners and administrators with different privileges
-```
+Please check [Issues.md](./ISSUES.md) for list of problems.
 
 ## Contributing
 Feel free to contribute to this project to fix the issues or add more stuff. To contribute create your own branch and request a pull request or fork your own clone. 

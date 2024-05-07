@@ -226,7 +226,7 @@ function Audio() {
 
     this.setTrack = function (track) {
         this.currentlyPlaying = track;
-        this.audio.src = "/" + track.path;
+        this.audio.src = "/music/" + track.path;
     }
 
     this.play = function () {

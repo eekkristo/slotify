@@ -15,7 +15,7 @@ services:
             - .env
             - secret.env
         ports:
-            - 8000:80
+            - 8443:80
         networks:
           - web-service
         develop:
@@ -45,6 +45,23 @@ services:
             PMA_HOST: db
         networks:
           - web-service
+    mpd:
+      image: tobi312/rpi-mpd:debian
+      #image: tobi312/rpi-mpd:alpine
+      container_name: mpd
+      restart: unless-stopped
+      ports:
+        - 6600:6600  # MPD Client
+        - 8000:8000  # Stream
+      volumes:
+        - ./public/music:/var/lib/mpd/music:rw
+        #- ./playlists:/var/lib/mpd/playlists:rw
+        #- ./data:/var/lib/mpd/data:rw
+        #- ./mpd.conf:/etc/mpd.conf:rw
+      #devices:
+      #- "/dev/snd:/dev/snd"
+      networks:
+        - web-service
 networks:
   web-service:
     driver: bridge
