@@ -19,9 +19,7 @@ Check contribution below to find what should be done.
 
 Recently I listened to the actual Spotify and thought to myself how have they hidden their audio files, so that you can't download it.
 
-I started digging deeper and realized there is something called EME - Encrypted Media Extensions and ABR - Adaptive Bitrate Streaming. I decided to tinker around with it and see how far  I can go with it. This initial push already follows some of those scopes which kind of "put" it behind a DRM. I would not call it yet a full DRM but I dare you to try and download this file :). Additionally, the files are loaded via chunks which is quite neat :D
-
-By no means I am an expert of it yet, but as time goes on I will try to adopt this and start testing how is it possible, if it even is to break the chunks and dump the files as real audio files.
+I started digging deeper and realized there is something called EME - Encrypted Media Extensions and ABR - Adaptive Bitrate Streaming. I decided to tinker around with it and see how far I can go with it. 
 
 I will leave some interesting links:
 
